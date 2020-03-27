@@ -6,12 +6,20 @@ package fr.uvsq21602618;
  *
  */
 public class QuitCommand implements Commande{
+    /**
+     * la saisie.
+     */
     private final Typing typing;
-
+    /**
+     * Commande pour quitter le programme.
+     * @param t la classe du type de saisie
+     */
     public QuitCommand(Typing t) {
         this.typing = t;
     }
-    
+    /**
+     * Application du 'quit'.
+     */
     public void apply() {
         typing.typeQuit();
     }
