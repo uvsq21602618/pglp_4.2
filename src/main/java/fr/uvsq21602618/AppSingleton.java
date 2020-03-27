@@ -10,9 +10,10 @@ public enum AppSingleton {
     ENVIRONNEMENT;
     /**
      * Execution du programme.
+     * @throws Exception 
      */
-    public void run() {
-        Typing typing = new Typing();
+    public void run() throws Exception {
+        /*Typing typing = new Typing();
         
         Commande undo = new UndoCommand(typing);
         Commande quit = new QuitCommand(typing);
@@ -22,13 +23,21 @@ public enum AppSingleton {
         interpreteur.addCommande("quit", quit);
         
         interpreteur.executeCommand("undo");
-        interpreteur.executeCommand("quit");
+        interpreteur.executeCommand("quit");*/
+        try{
+            SaisieRPN saisie= new SaisieRPN();
+            saisie.traitement();
+        }catch(ExceptionPile e ) { 
+            System.out.println(e.getMessage());
+        }
+        
 
     }
     /**
      * Main.
+     * @throws Exception 
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         ENVIRONNEMENT.run();
     }
 

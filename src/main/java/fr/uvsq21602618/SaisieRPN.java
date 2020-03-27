@@ -1,9 +1,6 @@
 package fr.uvsq21602618;
 
 import java.util.Scanner;
-
-import Main.PileVideException;
-
 /**
  * Classe qui gere les interactions avec l'utilisateur
  * et invoque le moteur RPN.
@@ -34,39 +31,42 @@ public class SaisieRPN {
         
         this.interpreteur.addCommande("undo", undo);
         this.interpreteur.addCommande("quit", quit);
-        
-        this.traitement();
     }
     /**
      * Traitement de la saisie.
+     * @throws BinaireOpsException 
+     * @throws DivisionParZeroException 
+     * @throws PileVideException 
      */
-    private void traitement() {
+    public void traitement() throws BinaireOpsException, DivisionParZeroException, PileVideException {
         
         while (!scanner.hasNext("quit")) {
             if (scanner.hasNextInt()) { 
                 moteur.saveOperande(scanner.nextInt());
-            } else if (scanner.hasNext("undo")) {
-                this.interpreteur.executeCommand("undo");
+            /*} else if (scanner.hasNext("undo")) {
+                this.interpreteur.executeCommand("undo");*/
             } else {
                 String s;
                 Operation op;
                 s = scanner.next();
                 if (!s.isEmpty()) {
-                    op = op.conversion(s.charAt(0));
+                    op = moteur.conversion(s.charAt(0));
                     moteur.applyOperation(op);
                 }else {
                     if (moteur.getList().size() > 0) {
                         moteur.AfficherOperandes();
                         System.out.println("resultat:" + moteur.getList().getFirst()); 
                     } 
-                    /*else {
+                    else {
                         throw new PileVideException();
-                    }*/
+                    }
                 }
             }
+            moteur.AfficherOperandes();
         }
         
         this.interpreteur.executeCommand("quit");
+        System.out.println("resultat:" + moteur.getList().getFirst());
     }
     /**
      * Méthode qui récupère le moteur.

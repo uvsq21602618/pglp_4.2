@@ -84,7 +84,29 @@ public class MoteurRPN extends Interpreteur{
         System.out.print("] \n"); 
     }
     /**
-    Récupérer la liste.
+     * Convertir le caractere en operande.
+     * @param symbole l'opérande
+     * @return Operation
+     * @throws BinaireOpsException
+     */
+    public Operation conversion(final char symbole) throws BinaireOpsException {
+        switch(symbole) {
+            case '+':
+                return Operation.PLUS;
+            
+            case '-':
+                return Operation.MOINS;
+            
+            case '/':
+                return Operation.DIV;
+            
+            case '*':
+                return Operation.MULTI;
+        }
+        throw new BinaireOpsException(); 
+    }
+    /**
+    Recuperer la liste.
     */
     public LinkedList<Integer> getList()
     {

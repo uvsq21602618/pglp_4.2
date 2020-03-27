@@ -97,5 +97,5 @@ public enum Operation {
      */
     public void setSymbole(final char symbole) {
         this.symbole = symbole;
-    }	
+    }
 }
