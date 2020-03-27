@@ -25,8 +25,8 @@ public class SaisieRPN {
         this.moteur = new MoteurRPN();
         this.scanner = new Scanner(System.in);
         this.typing = new Typing();
-        this.undo = new UndoCommand(typing);
-        this.quit = new UndoCommand(typing);
+        this.undo = new UndoCommand(typing, this.moteur);
+        this.quit = new QuitCommand(typing);
         this.interpreteur = new Interpreteur();
         
         this.interpreteur.addCommande("undo", undo);
@@ -34,6 +34,8 @@ public class SaisieRPN {
     }
     /**
      * Traitement de la saisie.
+     * Si on saisie 'undo', on annule la saisie précédente.
+     * Si on saisie 'quit', on termine le programme.
      * @throws BinaireOpsException 
      * @throws DivisionParZeroException 
      * @throws PileVideException 
@@ -41,12 +43,13 @@ public class SaisieRPN {
     public void traitement() throws BinaireOpsException, DivisionParZeroException, PileVideException {
         
         while (!scanner.hasNext("quit")) {
+            String s;
             if (scanner.hasNextInt()) { 
                 moteur.saveOperande(scanner.nextInt());
-            /*} else if (scanner.hasNext("undo")) {
-                this.interpreteur.executeCommand("undo");*/
+            } else if (scanner.hasNext("undo")) {
+                s = scanner.next();
+                this.interpreteur.executeCommand("undo");
             } else {
-                String s;
                 Operation op;
                 s = scanner.next();
                 if (!s.isEmpty()) {
@@ -66,7 +69,9 @@ public class SaisieRPN {
         }
         
         this.interpreteur.executeCommand("quit");
-        System.out.println("resultat:" + moteur.getList().getFirst());
+        if (!moteur.getList().isEmpty()) {
+            System.out.println("resultat:" + moteur.getList().getFirst());
+        }
     }
     /**
      * Méthode qui récupère le moteur.

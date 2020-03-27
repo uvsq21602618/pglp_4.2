@@ -3,7 +3,7 @@ package fr.uvsq21602618;
  * Singleton contenant le main.
  * @author Nathalie
  */
-public enum AppSingleton {
+public enum CalculatriceRPN {
     /**
      * L'enum qui contient le code du main.
      */

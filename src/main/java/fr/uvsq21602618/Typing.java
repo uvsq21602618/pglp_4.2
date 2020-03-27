@@ -10,7 +10,7 @@ public class Typing {
     }
 
     public void typeQuit() {
-        System.out.println("Quit");
+        System.out.println("Fin du programme!");
     }
     
 }

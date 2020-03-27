@@ -6,13 +6,34 @@ package fr.uvsq21602618;
  *
  */
 public class UndoCommand implements Commande{
+    /**
+     * la saisie.
+     */
     private final Typing typing;
-
-    public UndoCommand(Typing t) {
+    /**
+     * moteur RPN.
+     */
+    private final MoteurRPN moteur;
+    /**
+     * Constructeur de l'annulation de la saisie.
+     * @param t la saisie
+     * @param m le moteur
+     */
+    public UndoCommand(final Typing t, final MoteurRPN m) {
         this.typing = t;
+        this.moteur = m;
     }
-    
+    /**
+     * Application de l'annulation.
+     */
     public void apply() {
         typing.typeUndo();
+    }
+    /**
+     * Recuperation du moteur.
+     * @return moteur
+     */
+    public MoteurRPN getMoteur() {
+        return moteur;
     }
 }

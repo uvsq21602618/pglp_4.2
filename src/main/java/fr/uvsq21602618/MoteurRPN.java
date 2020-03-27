@@ -105,6 +105,10 @@ public class MoteurRPN extends Interpreteur{
         }
         throw new BinaireOpsException(); 
     }
+    
+    public void retirerSaisie() {
+        this.pile.removeFirst();
+    }
     /**
     Recuperer la liste.
     */
