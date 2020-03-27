@@ -85,9 +85,9 @@ public class MoteurRPN extends Interpreteur{
     }
     /**
     Récupérer la liste.
-    *
+    */
     public LinkedList<Integer> getList()
     {
         return pile;
-    }*/
+    }
 }

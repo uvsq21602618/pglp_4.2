@@ -24,7 +24,7 @@ public class Interpreteur {
     public void executeCommand(String nom) {
         Commande commande = commandes.get(nom);
         if (commande == null) {
-            throw new IllegalStateException("La commande : " + nom + " n'exite pas !");
+            throw new IllegalStateException("La commande : " + nom + " n'existe pas !");
         }
         commande.apply();
     }
