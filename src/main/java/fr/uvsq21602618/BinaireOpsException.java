@@ -5,7 +5,7 @@ package fr.uvsq21602618;
  * @author Nathalie
  *
  */
-public class BinaireOpsException extends ExceptionPile {
+public class BinaireOpsException extends ExceptionCalculatrice {
 	/**
      * SerialID.
      */

@@ -45,9 +45,10 @@ public class Historique {
     }
     /**
      * Redefinit l'operande 2.
+     * @param operande2 
      * @param operande2
      */
-    public void setOperande2(final int operande1) {
-        this.operande1 = operande1;
+    public void setOperande2(final int operande2) {
+        this.operande2 = operande2;
     }
 }

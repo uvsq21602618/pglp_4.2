@@ -12,18 +12,18 @@ public class MoteurRPN extends Interpreteur{
      */
     private LinkedList<Integer> pile;
     /**
-     * La premiere operande de la liste.
+     * Historique contenant les saisies de nombres (true)
+     * ou de d'operateurs (false).
      */
-    private int operande1;
+    private LinkedList<Boolean> historiqueType;
     /**
-     * La deuxieme operande de la liste.
+     * Historique des commandes.
      */
-    private int operande2;
-    /**
-     * Constructeur du moteur.
-     */
+    private LinkedList<Historique> historiqueOpe;
     public MoteurRPN() {
         pile = new LinkedList<Integer>();
+        historiqueType = new LinkedList<Boolean>();
+        historiqueOpe = new LinkedList<Historique>();
     }
     /**
     Mettre l'operande sur la pile.
@@ -49,11 +49,10 @@ public class MoteurRPN extends Interpreteur{
     public void applyOperation(final Operation op) throws BinaireOpsException,
     DivisionParZeroException {
         OperandeBinaire(op);
-        setOperande1(pile.get(pile.size() - 2));
-        setOperande2(pile.get(pile.size() - 1));
+        Historique hist = new Historique(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
+        this.historiqueOpe.add(hist);
         int res = 0;
-        switch (op) 
-        {
+        switch (op) {
             case PLUS:
                 res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
@@ -69,7 +68,6 @@ public class MoteurRPN extends Interpreteur{
             case DIV:
                 res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
-        
         }
         
         pile.removeLast(); 
@@ -90,10 +88,14 @@ public class MoteurRPN extends Interpreteur{
      */
     public void cancelEval() {
         this.pile.removeLast();
-        this.pile.add(operande1);
+        this.pile.add(historiqueOpe.getLast().getOperande1());
+        this.pile.add(historiqueOpe.getLast().getOperande2());
+        this.historiqueOpe.removeLast();
+        
+        /*this.pile.add(operande1);
         this.pile.add(operande2);
         setOperande1(pile.get(pile.size()-2));
-        setOperande2(pile.get(pile.size()-1));
+        setOperande2(pile.get(pile.size()-1));*/
     }
     /**
     Afficher les operations dans la pile.
@@ -134,36 +136,16 @@ public class MoteurRPN extends Interpreteur{
         this.pile.removeFirst();
     }
     /**
-    Recuperer la liste.
+    Recuperer la pile.
     */
-    public LinkedList<Integer> getList()
-    {
+    public LinkedList<Integer> getList() {
         return pile;
     }
     /**
-     * Méthode pour recuperer la premiere operande.
-     * @return operande1
+     * Recupere l'historique du type de saisie.
+     * @return l' historique.
      */
-    public int getOperande1() {
-        return operande1;
-    }
-    /**
-     * Méthode pour redefinir la premiere operande.
-     */
-    public void setOperande1(final int ope1) {
-        this.operande1 = ope1;
-    }
-    /**
-     * Méthode pour recuperer la deuxieme operande.
-     * @return operande1
-     */
-    public int getOperande2() {
-        return operande2;
-    }
-    /**
-     * Méthode pour redefinir la deuxieme operande.
-     */
-    public void setOperande2(final int ope2) {
-        this.operande2 = ope2;
+    public LinkedList<Boolean> getHistoriqueType() {
+        return historiqueType;
     }
 }

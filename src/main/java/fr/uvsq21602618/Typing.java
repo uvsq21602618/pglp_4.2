@@ -6,7 +6,7 @@ package fr.uvsq21602618;
  */
 public class Typing {
     public void typeUndo() {
-        System.out.println("Undo");
+        System.out.println("Annulation de la saisie précédente!");
     }
 
     public void typeQuit() {

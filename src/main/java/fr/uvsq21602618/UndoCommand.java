@@ -27,6 +27,18 @@ public class UndoCommand implements Commande{
      * Application de l'annulation.
      */
     public void apply() {
+        if (!moteur.getList().isEmpty()) {
+            if (moteur.getHistoriqueType().getLast() == true) {
+                moteur.removeFirstPile();
+                if (!moteur.getList().isEmpty()) {
+                    System.out.println("resultat:" + moteur.getList().getFirst());
+                }
+            } else {
+                moteur.cancelEval();
+                System.out.println("resultat:" + moteur.getList().getFirst());
+            }
+            moteur.getHistoriqueType().removeLast();
+        }
         typing.typeUndo();
     }
     /**

@@ -27,7 +27,7 @@ public enum CalculatriceRPN {
         try{
             SaisieRPN saisie= new SaisieRPN();
             saisie.traitement();
-        }catch(ExceptionPile e ) { 
+        }catch(ExceptionCalculatrice e ) { 
             System.out.println(e.getMessage());
         }
         
