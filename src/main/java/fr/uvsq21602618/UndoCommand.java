@@ -30,12 +30,8 @@ public class UndoCommand implements Commande{
         if (!moteur.getList().isEmpty()) {
             if (moteur.getHistoriqueType().getLast() == true) {
                 moteur.removeFirstPile();
-                if (!moteur.getList().isEmpty()) {
-                    System.out.println("resultat:" + moteur.getList().getFirst());
-                }
             } else {
                 moteur.cancelEval();
-                System.out.println("resultat:" + moteur.getList().getFirst());
             }
             moteur.getHistoriqueType().removeLast();
         }

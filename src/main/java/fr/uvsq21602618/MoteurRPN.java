@@ -91,22 +91,15 @@ public class MoteurRPN extends Interpreteur{
         this.pile.add(historiqueOpe.getLast().getOperande1());
         this.pile.add(historiqueOpe.getLast().getOperande2());
         this.historiqueOpe.removeLast();
-        
-        /*this.pile.add(operande1);
-        this.pile.add(operande2);
-        setOperande1(pile.get(pile.size()-2));
-        setOperande2(pile.get(pile.size()-1));*/
     }
     /**
     Afficher les operations dans la pile.
     */
     public void AfficherOperandes() {
         System.out.print("Affichage Pile : [");
-        for (Integer d : pile)
-        {
+        for (Integer d : pile) {
             System.out.print(d + "=>");
         }
-        
         System.out.print("] \n"); 
     }
     /**

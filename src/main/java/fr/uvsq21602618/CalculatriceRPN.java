@@ -13,25 +13,12 @@ public enum CalculatriceRPN {
      * @throws Exception 
      */
     public void run() throws Exception {
-        /*Typing typing = new Typing();
-        
-        Commande undo = new UndoCommand(typing);
-        Commande quit = new QuitCommand(typing);
-        
-        Interpreteur interpreteur = new Interpreteur();
-        interpreteur.addCommande("undo", undo);
-        interpreteur.addCommande("quit", quit);
-        
-        interpreteur.executeCommand("undo");
-        interpreteur.executeCommand("quit");*/
         try{
             SaisieRPN saisie= new SaisieRPN();
             saisie.traitement();
         }catch(ExceptionCalculatrice e ) { 
             System.out.println(e.getMessage());
         }
-        
-
     }
     /**
      * Main.
