@@ -5,7 +5,7 @@ package fr.uvsq21602618;
  * @author Nathalie
  *
  */
-public class QuitCommand implements Commande{
+public class QuitCommand implements Commande {
     /**
      * la saisie.
      */
@@ -14,7 +14,7 @@ public class QuitCommand implements Commande{
      * Commande pour quitter le programme.
      * @param t la classe du type de saisie
      */
-    public QuitCommand(Typing t) {
+    public QuitCommand(final Typing t) {
         this.typing = t;
     }
     /**

@@ -10,21 +10,22 @@ public enum CalculatriceRPN {
     ENVIRONNEMENT;
     /**
      * Execution du programme.
-     * @throws Exception 
+     * @throws Exception liee a la calculatrice
      */
     public void run() throws Exception {
-        try{
-            SaisieRPN saisie= new SaisieRPN();
+        try {
+            SaisieRPN saisie = new SaisieRPN();
             saisie.traitement();
-        }catch(ExceptionCalculatrice e ) { 
+        } catch (ExceptionCalculatrice e) {
             System.out.println(e.getMessage());
         }
     }
     /**
      * Main.
-     * @throws Exception 
+     * @throws Exception liee a la calculatrice.
+     * @param args arguments
      */
-    public static void main(String args[]) throws Exception {
+    public static void main(final String[] args) throws Exception {
         ENVIRONNEMENT.run();
     }
 

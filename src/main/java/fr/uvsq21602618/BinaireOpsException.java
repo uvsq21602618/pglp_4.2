@@ -6,7 +6,7 @@ package fr.uvsq21602618;
  *
  */
 public class BinaireOpsException extends ExceptionCalculatrice {
-	/**
+    /**
      * SerialID.
      */
     private static final long serialVersionUID = 1L;
@@ -14,6 +14,7 @@ public class BinaireOpsException extends ExceptionCalculatrice {
      * Message associé à l'exception.
      */
     public BinaireOpsException() {
-		super("Assurez vous d'avoir 2 operandes au moins et d'utiliser les operateurs demandes!");
-	}
+        super("Assurez vous d'avoir 2 operandes "
+                + "au moins et d'utiliser les operateurs demandes!");
+    }
 }

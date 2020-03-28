@@ -24,31 +24,30 @@ public class Historique {
     }
     /**
      * Recupere l'operande 1.
-     * @return l'operande 1
+     * @return l'operande1
      */
     public int getOperande1() {
         return operande1;
     }
     /**
      * Redefinit l'operande 1.
-     * @param operande1
+     * @param ope1 la premiere operande.
      */
-    public void setOperande1(final int operande1) {
-        this.operande1 = operande1;
+    public void setOperande1(final int ope1) {
+        this.operande1 = ope1;
     }
     /**
      * Recupere l'operande 2.
-     * @return l'operande 2
+     * @return l'operande2
      */
     public int getOperande2() {
         return operande2;
     }
     /**
      * Redefinit l'operande 2.
-     * @param operande2 
-     * @param operande2
+     * @param ope2  la deuxieme operande
      */
-    public void setOperande2(final int operande2) {
-        this.operande2 = operande2;
+    public void setOperande2(final int ope2) {
+        this.operande2 = ope2;
     }
 }

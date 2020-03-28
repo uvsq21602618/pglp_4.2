@@ -9,6 +9,10 @@ import java.util.HashMap;
  *
  */
 public class Interpreteur {
+    /**
+     * La table de hachage qui associe une chaine
+     * de caractere a une commande.
+     */
     private final HashMap<String, Commande> commandes;
     /**
      * Le constructeur de l'interpréteur.
@@ -16,15 +20,25 @@ public class Interpreteur {
     public Interpreteur() {
         this.commandes = new HashMap<String, Commande>();
     }
-
-    public void addCommande(String nom, Commande commande) {
+    /**
+     * Ajout d'une commande associé à son nom.
+     * @param nom de la commande
+     * @param commande l'instance
+     */
+    public void addCommande(final String nom,
+            final Commande commande) {
         this.commandes.put(nom, commande);
     }
-
-    public void executeCommand(String nom) {
+    /**
+     * Méthode d'execution de la commande
+     * en fonction du nom en parametre.
+     * @param nom celui de la commande
+     */
+    public void executeCommand(final String nom) {
         Commande commande = commandes.get(nom);
         if (commande == null) {
-            throw new IllegalStateException("La commande : " + nom + " n'existe pas !");
+            throw new IllegalStateException("La commande :"
+                    + " " + nom + " n'existe pas !");
         }
         commande.apply();
     }

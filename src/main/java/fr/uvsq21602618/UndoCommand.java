@@ -5,7 +5,7 @@ package fr.uvsq21602618;
  * @author Nathalie
  *
  */
-public class UndoCommand implements Commande{
+public class UndoCommand implements Commande {
     /**
      * la saisie.
      */
@@ -28,7 +28,7 @@ public class UndoCommand implements Commande{
      */
     public void apply() {
         if (!moteur.getList().isEmpty()) {
-            if (moteur.getHistoriqueType().getLast() == true) {
+            if (moteur.getHistoriqueType().getLast()) {
                 moteur.removeFirstPile();
             } else {
                 moteur.cancelEval();

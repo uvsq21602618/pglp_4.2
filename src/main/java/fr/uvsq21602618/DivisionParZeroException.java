@@ -5,7 +5,7 @@ package fr.uvsq21602618;
  *
  */
 public class DivisionParZeroException extends ExceptionCalculatrice {
-	/**
+    /**
      * SerialID.
      */
     private static final long serialVersionUID = 1L;
@@ -13,6 +13,6 @@ public class DivisionParZeroException extends ExceptionCalculatrice {
      * Message associé à l'exception.
      */
     public DivisionParZeroException() {
-		super("Division par 0 non autorisee!");
-	}
+        super("Division par 0 non autorisee!");
+    }
 }

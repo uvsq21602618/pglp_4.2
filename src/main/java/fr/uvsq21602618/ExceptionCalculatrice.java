@@ -5,16 +5,16 @@ package fr.uvsq21602618;
  *
  */
 public class ExceptionCalculatrice extends Exception {
-	/**
+    /**
      * SerialID.
      */
     private static final long serialVersionUID = 1L;
     /**
      * Message associée à l'exception.
-     * @param message
+     * @param message l'erreur associé
      */
-    public ExceptionCalculatrice(String message) {
-		super(message);
-	}
+    public ExceptionCalculatrice(final String message) {
+        super(message);
+    }
 
 }

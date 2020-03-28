@@ -31,6 +31,7 @@ public class SaisieRPN {
     /**
      * Historique contenant les saisies de nombres (true)
      * ou de d'operateurs (false).
+     * @throws Exception liée a la calculatrice
      */
     public SaisieRPN() throws Exception {
         this.moteur = new MoteurRPN();
@@ -38,7 +39,7 @@ public class SaisieRPN {
         this.typing = new Typing();
         this.undo = new UndoCommand(typing, this.moteur);
         this.quit = new QuitCommand(typing);
-        
+
         this.moteur.addCommande("undo", undo);
         this.moteur.addCommande("quit", quit);
     }
@@ -46,11 +47,12 @@ public class SaisieRPN {
      * Traitement de la saisie.
      * Si on saisie 'undo', on annule la saisie précédente.
      * Si on saisie 'quit', on termine le programme.
-     * @throws BinaireOpsException 
-     * @throws DivisionParZeroException 
-     * @throws PileVideException 
+     * @throws BinaireOpsException Si la saisie n'est
+     * pas correcte
+     * @throws DivisionParZeroException si on divise par zero
      */
-    public void traitement() throws BinaireOpsException, DivisionParZeroException {
+    public void traitement()
+            throws BinaireOpsException, DivisionParZeroException {
         while (!scanner.hasNext("quit")) {
             String s;
             if (scanner.hasNextInt()) {
@@ -68,7 +70,7 @@ public class SaisieRPN {
                     moteur.applyOperation(op);
                 }
             }
-            moteur.AfficherOperandes();
+            moteur.afficherOperandes();
         }
         this.moteur.executeCommand("quit");
         if (!moteur.getList().isEmpty()) {
@@ -91,13 +93,13 @@ public class SaisieRPN {
     }
     /**
      * Méthode qui redéfinit le scanner.
-     * @param scanner le scanner utilise
+     * @param scan le scanner utilise
      */
     public void setScanner(final Scanner scan) {
         this.scanner = scan;
     }
     /**
-     * Méthode pour récupérer le Typing
+     * Méthode pour récupérer le Typing.
      * @return typing courant
      */
     public Typing getTyping() {
