@@ -1,5 +1,6 @@
 package fr.uvsq21602618;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 /**
  * Classe qui gere les interactions avec l'utilisateur
@@ -17,6 +18,7 @@ public class SaisieRPN {
     private final Commande undo;
     private final Commande quit;
     private final Interpreteur interpreteur;
+    private LinkedList<Boolean> historique;
     /**
      * Le constructeur de la saisie.
      * @throws Exception
@@ -27,6 +29,7 @@ public class SaisieRPN {
         this.typing = new Typing();
         this.undo = new UndoCommand(typing, this.moteur);
         this.quit = new QuitCommand(typing);
+        this.historique = new LinkedList<Boolean>();
         this.interpreteur = new Interpreteur();
         
         this.interpreteur.addCommande("undo", undo);
@@ -42,17 +45,35 @@ public class SaisieRPN {
      */
     public void traitement() throws BinaireOpsException, DivisionParZeroException, PileVideException {
         
+        //boolean isNb = false;
         while (!scanner.hasNext("quit")) {
             String s;
-            if (scanner.hasNextInt()) { 
+            if (scanner.hasNextInt()) {
+                this.historique.add(true);
+                //isNb = true;
                 moteur.saveOperande(scanner.nextInt());
             } else if (scanner.hasNext("undo")) {
                 s = scanner.next();
+                if (!moteur.getList().isEmpty()) {
+                    if (this.historique.getLast() == true/*isNb == true*/) {
+                        //this.historique.removeFirst();
+                        moteur.removeFirstPile();
+                        if (!moteur.getList().isEmpty()) {
+                            System.out.println("resultat:" + moteur.getList().getFirst());
+                        }
+                    } else {
+                        moteur.cancelEval();
+                        System.out.println("resultat:" + moteur.getList().getFirst());
+                    }
+                    this.historique.removeLast();
+                }
                 this.interpreteur.executeCommand("undo");
             } else {
                 Operation op;
                 s = scanner.next();
                 if (!s.isEmpty()) {
+                    this.historique.add(false);
+                    //isNb = false;
                     op = moteur.conversion(s.charAt(0));
                     moteur.applyOperation(op);
                 }else {
@@ -100,5 +121,12 @@ public class SaisieRPN {
      */
     public Typing getTyping() {
         return typing;
+    }
+    /**
+     * Méthode pour récupérer l'historique
+     * @return l'historique
+     */
+    public LinkedList<Boolean> getHistorique() {
+        return historique;
     }
 }

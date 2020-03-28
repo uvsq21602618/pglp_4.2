@@ -10,16 +10,24 @@ public class MoteurRPN extends Interpreteur{
     /**
      * Pile contenant les opérandes saisies.
      */
-    public LinkedList<Integer> pile;
+    private LinkedList<Integer> pile;
+    /**
+     * La premiere operande de la liste.
+     */
+    private int operande1;
+    /**
+     * La deuxieme operande de la liste.
+     */
+    private int operande2;
     /**
      * Constructeur du moteur.
      */
     public MoteurRPN() {
-        pile=new LinkedList<Integer>();
+        pile = new LinkedList<Integer>();
     }
     /**
-    Mettre l'opérande sur la pile.
-    @param op L'opérande.
+    Mettre l'operande sur la pile.
+    @param op L'operande.
     */
     public void saveOperande(final int op) {
         pile.addLast(op);
@@ -41,35 +49,51 @@ public class MoteurRPN extends Interpreteur{
     public void applyOperation(final Operation op) throws BinaireOpsException,
     DivisionParZeroException {
         OperandeBinaire(op);
+        setOperande1(pile.get(pile.size() - 2));
+        setOperande2(pile.get(pile.size() - 1));
         int res = 0;
         switch (op) 
         {
             case PLUS:
-                res = op.eval(pile.get(pile.size()-2),pile.get(pile.size()-1));
-                //System.out.print(ope1+"+"+ope2+"\n");
+                res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
             
             case MOINS:
-                res = op.eval(pile.get(pile.size()-2),pile.get(pile.size()-1));
-                //System.out.print(ope1+"-"+ope2+"\n");
+                res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
             
             case MULTI:
-                res = op.eval(pile.get(pile.size()-2),pile.get(pile.size()-1));
-                //System.out.print(ope1+"*"+ope2+"\n");
+                res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
             
             case DIV:
-                res = op.eval(pile.get(pile.size()-2),pile.get(pile.size()-1));
-                //System.out.print(ope1+"/"+ope2+"\n");
+                res = op.eval(pile.get(pile.size() - 2), pile.get(pile.size() - 1));
             break;
         
         }
         
         pile.removeLast(); 
         pile.removeLast();
-        this.saveOperande(res);
-        
+        this.saveOperande(res); 
+    }
+    /**
+     * Retire le premier element de la pile.
+     * Remet à jour les operandes 1 et 2.
+     */
+    public void removeFirstPile() {
+        if (pile.size() > 0) {
+            this.pile.removeLast();
+        }
+    }
+    /**
+     * Annule le resultat de l'evaluation.
+     */
+    public void cancelEval() {
+        this.pile.removeLast();
+        this.pile.add(operande1);
+        this.pile.add(operande2);
+        setOperande1(pile.get(pile.size()-2));
+        setOperande2(pile.get(pile.size()-1));
     }
     /**
     Afficher les operations dans la pile.
@@ -115,5 +139,31 @@ public class MoteurRPN extends Interpreteur{
     public LinkedList<Integer> getList()
     {
         return pile;
+    }
+    /**
+     * Méthode pour recuperer la premiere operande.
+     * @return operande1
+     */
+    public int getOperande1() {
+        return operande1;
+    }
+    /**
+     * Méthode pour redefinir la premiere operande.
+     */
+    public void setOperande1(final int ope1) {
+        this.operande1 = ope1;
+    }
+    /**
+     * Méthode pour recuperer la deuxieme operande.
+     * @return operande1
+     */
+    public int getOperande2() {
+        return operande2;
+    }
+    /**
+     * Méthode pour redefinir la deuxieme operande.
+     */
+    public void setOperande2(final int ope2) {
+        this.operande2 = ope2;
     }
 }
