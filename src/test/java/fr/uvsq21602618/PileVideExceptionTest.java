@@ -1,14 +1,11 @@
 package fr.uvsq21602618;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 /**
  * Classe test pour PileVideException.
  * @author Nathalie
  *
  */
-
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 public class PileVideExceptionTest {
     /**
      * Instance de moteurRPN.
@@ -19,9 +16,9 @@ public class PileVideExceptionTest {
      * pile est vide.
      * @throws PileVideException si la pile est vide
      */
-    @Test(expected = PileVideException.class) 
+    @Test(expected = PileVideException.class)
     public void testPileVide() throws PileVideException {
         moteur.removeFirstPile();
-        assertTrue(moteur.getList().isEmpty());
+        assertTrue(moteur.pileIsEmpty());
     }
 }

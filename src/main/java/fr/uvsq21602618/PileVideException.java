@@ -4,7 +4,7 @@ package fr.uvsq21602618;
  * @author Nathalie
  *
  */
-public class PileVideException extends ExceptionCalculatrice{
+public class PileVideException extends ExceptionCalculatrice {
     /**
      * SerialID.
      */

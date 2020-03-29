@@ -53,8 +53,9 @@ public class SaisieRPN {
      * @throws PileVideException si la pile est vide
      */
     public void traitement()
-            throws BinaireOpsException, DivisionParZeroException, PileVideException {
-        while (!scanner.hasNext("quit")) {
+            throws BinaireOpsException, DivisionParZeroException,
+            PileVideException {
+        while (!scanner.hasNext("quit") && scanner.hasNext()) {
             String s;
             if (scanner.hasNextInt()) {
                 moteur.getHistoriqueType().add(true);
@@ -73,9 +74,10 @@ public class SaisieRPN {
             }
             moteur.afficherOperandes();
         }
-        this.moteur.executeCommand("quit");
-        if (!moteur.getList().isEmpty()) {
-            System.out.println("resultat:" + moteur.getList().getFirst());
+        if (scanner.hasNext("quit")) {
+            this.moteur.executeCommand("quit");
+            } else if (!moteur.pileIsEmpty()) {
+            System.out.println("resultat:" + moteur.getPileFirstInt());
         }
     }
     /**

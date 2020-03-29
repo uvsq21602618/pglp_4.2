@@ -51,7 +51,7 @@ public class InterpreteurTest {
         inter.addCommande("quit", commande);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        inter.executeCommand("quit"); 
+        inter.executeCommand("quit");
         String expected = "Fin du programme!";
 
         assertEquals(expected, outContent.toString().trim());

@@ -25,10 +25,10 @@ public class UndoCommand implements Commande {
     }
     /**
      * Application de l'annulation.
-     * @throws PileVideException 
+     * @throws PileVideException si pile vide
      */
     public void apply() throws PileVideException {
-        if (!moteur.getList().isEmpty()) {
+        if (!moteur.pileIsEmpty()) {
             if (moteur.getHistoriqueType().getLast()) {
                 moteur.removeFirstPile();
             } else {

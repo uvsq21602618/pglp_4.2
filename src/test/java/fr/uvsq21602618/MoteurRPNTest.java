@@ -25,7 +25,7 @@ public class MoteurRPNTest {
     public void saveOperandeTest() {
         int exp = 2;
         moteur.saveOperande(2);
-        int test = moteur.getList().getLast();
+        int test = moteur.getPileFirstInt();
         assertEquals(test, exp);
     }
     /**
@@ -40,33 +40,33 @@ public class MoteurRPNTest {
         moteur.saveOperande(2);
         moteur.applyOperation(Operation.PLUS);
         int exp = 3;
-        int test = moteur.getList().getLast();
+        int test = moteur.getPileFirstInt();
         assertEquals(test, exp);
 
         moteur.saveOperande(1);
         moteur.saveOperande(2);
         moteur.applyOperation(Operation.MOINS);
         exp = -1;
-        test = moteur.getList().getLast();
+        test = moteur.getPileFirstInt();
         assertEquals(test, exp);
 
         moteur.saveOperande(3);
         moteur.saveOperande(2);
         moteur.applyOperation(Operation.MULTI);
         exp = 6;
-        test = moteur.getList().getLast();
+        test = moteur.getPileFirstInt();
         assertEquals(test, exp);
 
         moteur.saveOperande(5);
         moteur.saveOperande(2);
         moteur.applyOperation(Operation.DIV);
         exp = 2;
-        test = moteur.getList().getLast();
+        test = moteur.getPileFirstInt();
         assertEquals(test, exp);
     }
     /**
      * Test de la methode removeFirstPile.
-     * @throws PileVideException 
+     * @throws PileVideException si la pile est vide
      */
     @Test
     public void removeFirstPileTest() throws PileVideException {
@@ -74,7 +74,7 @@ public class MoteurRPNTest {
         moteur.saveOperande(2);
         moteur.removeFirstPile();
         int exp = 1;
-        int test = moteur.getList().getLast();
+        int test = moteur.getPileFirstInt();
         assertEquals(test, exp);
     }
     /**
@@ -127,7 +127,7 @@ public class MoteurRPNTest {
     public void retirerSaisieTest() {
         moteur.saveOperande(1);
         moteur.retirerSaisie();
-        assertTrue(moteur.getList().isEmpty());
+        assertTrue(moteur.pileIsEmpty());
     }
     /**
      * Test de cancelEval.
@@ -143,12 +143,12 @@ public class MoteurRPNTest {
         moteur.applyOperation(Operation.MULTI);
         moteur.cancelEval();
         int exp = 10;
-        int test = moteur.getList().getLast();
+        int test = moteur.getPileFirstInt();
         assertEquals(exp, test);
 
         moteur.removeFirstPile();
         exp = 4;
-        test = moteur.getList().getLast();
+        test = moteur.getPileFirstInt();
         assertEquals(exp, test);
     }
 }

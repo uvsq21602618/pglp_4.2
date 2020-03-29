@@ -33,7 +33,7 @@ public class MoteurRPN extends Interpreteur {
     @param op L'operande.
      */
     public void saveOperande(final int op) {
-        pile.addLast(op); 
+        pile.addLast(op);
     }
     /**
     Vérification du nombre d'operandes inseree et des operateurs utilises.
@@ -92,8 +92,9 @@ public class MoteurRPN extends Interpreteur {
     /**
      * Retire le premier element de la pile.
      * Remet à jour les operandes 1 et 2.
+     * @throws PileVideException si la pile est vide
      */
-    public void removeFirstPile() throws PileVideException{
+    public void removeFirstPile() throws PileVideException {
         if (pile.size() > 0) {
             this.pile.removeLast();
         } else {
@@ -152,17 +153,24 @@ public class MoteurRPN extends Interpreteur {
         this.pile.removeFirst();
     }
     /**
-    Recuperer la pile.
-     *@return pile la pile
-     */
-    public LinkedList<Integer> getList() {
-        return pile;
-    }
-    /**
      * Recupere l'historique du type de saisie.
      * @return l' historique.
      */
     public LinkedList<Boolean> getHistoriqueType() {
         return historiqueType;
+    }
+    /**
+     * Retourne le premier element de la pile.
+     * @return le premier entier.
+     */
+    public int getPileFirstInt() {
+        return this.pile.getLast();
+    }
+    /**
+     * Methode pour savoir si la pile est vide ou non.
+     * @return true si la pile est vide, false sinon
+     */
+    public boolean pileIsEmpty() {
+        return this.pile.isEmpty();
     }
 }
