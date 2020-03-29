@@ -21,7 +21,8 @@ public class BinaireOpsExceptionTest {
      */
     @Test(expected = BinaireOpsException.class)
     public void mauvaiseSaisieException() throws Exception {
-        ByteArrayInputStream in = new ByteArrayInputStream("1 2 o\n".getBytes());
+        ByteArrayInputStream in =
+                new ByteArrayInputStream("1 2 o\n".getBytes());
         System.setIn(in);
         s = new SaisieRPN();
         s.traitement();
