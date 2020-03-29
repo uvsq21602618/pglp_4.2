@@ -22,7 +22,7 @@ public class HistoriqueTest {
         hist = new Historique(1, 2);
         int expOp1 = 1;
         int expOp2 = 2;
-        
+
         assertEquals(expOp1, hist.getOperande1());
         assertEquals(expOp2, hist.getOperande2());
     }
@@ -37,7 +37,7 @@ public class HistoriqueTest {
         hist.setOperande2(4);
         int expOp1 = 3;
         int expOp2 = 4;
-        
+
         assertEquals(expOp1, hist.getOperande1());
         assertEquals(expOp2, hist.getOperande2());
     }
