@@ -37,7 +37,7 @@ public class OperationTest {
      */
     @Test
     public void testDivision() throws DivisionParZeroException {
-        int d = Operation.DIV.eval(10, 5);  
+        int d = Operation.DIV.eval(10, 5);
         int exp = 2;
         assertEquals(exp, d);
     }
@@ -49,6 +49,6 @@ public class OperationTest {
     public void testMultiplication() throws DivisionParZeroException {
         int d = Operation.MULTI.eval(10, 2);
         int exp = 20;
-        assertEquals(exp, d); 
+        assertEquals(exp, d);
     }
 }

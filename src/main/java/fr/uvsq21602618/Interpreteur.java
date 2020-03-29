@@ -1,6 +1,8 @@
 package fr.uvsq21602618;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * La classe Interpreteur qui supporte uniquement
@@ -41,5 +43,15 @@ public class Interpreteur {
                     + " " + nom + " n'existe pas !");
         }
         commande.apply();
+    }
+    /**
+     * Méthode pour retourner la table de hachage
+     * sans qu'elle puisse etre modifiee.
+     * @return commandes non modifiable
+     */
+    public Map<String, Commande> getCommandes() {
+        Map<String, Commande> unmodifiable =
+                Collections.unmodifiableMap(this.commandes);
+        return unmodifiable;
     }
 }

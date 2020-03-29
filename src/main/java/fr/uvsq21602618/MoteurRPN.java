@@ -33,7 +33,7 @@ public class MoteurRPN extends Interpreteur {
     @param op L'operande.
      */
     public void saveOperande(final int op) {
-        pile.addLast(op);
+        pile.addLast(op); 
     }
     /**
     Vérification du nombre d'operandes inseree et des operateurs utilises.
