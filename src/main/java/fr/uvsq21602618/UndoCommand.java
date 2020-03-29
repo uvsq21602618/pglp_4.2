@@ -25,8 +25,9 @@ public class UndoCommand implements Commande {
     }
     /**
      * Application de l'annulation.
+     * @throws PileVideException 
      */
-    public void apply() {
+    public void apply() throws PileVideException {
         if (!moteur.getList().isEmpty()) {
             if (moteur.getHistoriqueType().getLast()) {
                 moteur.removeFirstPile();

@@ -41,16 +41,17 @@ public class InterpreteurTest {
     }
     /**
      * Test de la méthode executeCommand avec quit.
+     * @throws PileVideException si la pile est vide
      */
     @Test
-    public void executeCommandTest() {
+    public void executeCommandTest() throws PileVideException {
         typing = new Typing();
         commande = new QuitCommand(typing);
         inter = new Interpreteur();
         inter.addCommande("quit", commande);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        inter.executeCommand("quit");
+        inter.executeCommand("quit"); 
         String expected = "Fin du programme!";
 
         assertEquals(expected, outContent.toString().trim());
@@ -58,9 +59,10 @@ public class InterpreteurTest {
     /**
      * Test de executeCommand lorsque
      * la commande n'existe pas.
+     * @throws PileVideException si la pile est vide
      */
     @Test(expected = IllegalStateException.class)
-    public void executeCommand2Test() {
+    public void executeCommand2Test() throws PileVideException {
         typing = new Typing();
         commande = new QuitCommand(typing);
         inter = new Interpreteur();

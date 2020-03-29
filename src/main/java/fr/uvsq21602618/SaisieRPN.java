@@ -50,9 +50,10 @@ public class SaisieRPN {
      * @throws BinaireOpsException Si la saisie n'est
      * pas correcte
      * @throws DivisionParZeroException si on divise par zero
+     * @throws PileVideException si la pile est vide
      */
     public void traitement()
-            throws BinaireOpsException, DivisionParZeroException {
+            throws BinaireOpsException, DivisionParZeroException, PileVideException {
         while (!scanner.hasNext("quit")) {
             String s;
             if (scanner.hasNextInt()) {

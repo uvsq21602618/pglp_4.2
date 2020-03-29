@@ -35,8 +35,9 @@ public class Interpreteur {
      * Méthode d'execution de la commande
      * en fonction du nom en parametre.
      * @param nom celui de la commande
+     * @throws PileVideException  quand la pile est vide
      */
-    public void executeCommand(final String nom) {
+    public void executeCommand(final String nom) throws PileVideException {
         Commande commande = commandes.get(nom);
         if (commande == null) {
             throw new IllegalStateException("La commande :"

@@ -93,9 +93,11 @@ public class MoteurRPN extends Interpreteur {
      * Retire le premier element de la pile.
      * Remet à jour les operandes 1 et 2.
      */
-    public void removeFirstPile() {
+    public void removeFirstPile() throws PileVideException{
         if (pile.size() > 0) {
             this.pile.removeLast();
+        } else {
+            throw new PileVideException();
         }
     }
     /**

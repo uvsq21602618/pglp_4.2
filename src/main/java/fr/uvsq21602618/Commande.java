@@ -7,6 +7,7 @@ package fr.uvsq21602618;
 public interface Commande {
     /**
      * Méthode d'application de la commande.
+     * @throws PileVideException  quand la pile est vide
      */
-    void apply();
+    void apply() throws PileVideException;
 }
