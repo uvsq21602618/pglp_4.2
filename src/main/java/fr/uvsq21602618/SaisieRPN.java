@@ -35,7 +35,7 @@ public class SaisieRPN {
      */
     public SaisieRPN() throws Exception {
         this.moteur = new MoteurRPN();
-        this.scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in, "UTF-8");
         this.typing = new Typing();
         this.undo = new UndoCommand(typing, this.moteur);
         this.quit = new QuitCommand(typing);

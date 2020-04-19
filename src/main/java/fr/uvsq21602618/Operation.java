@@ -108,7 +108,7 @@ public enum Operation {
      * Méthode pour définir le symbole.
      * @param sbl l'opérateur
      */
-    public void setSymbole(final char sbl) {
+    private void setSymbole(final char sbl) {
         this.symbole = sbl;
     }
 }
